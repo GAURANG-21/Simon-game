@@ -2,6 +2,7 @@ var interval;
 let c=1,t=0;
 let arr=[];
 let color=["green","red", "yellow","blue"];
+var max=0;
 
 function numberGen(){
     $("h1").text("Level "+c);
@@ -25,13 +26,16 @@ function wrong(){
     $("h1").text("Game over. Press any key to Restart");
 }
 
-document.addEventListener("click",()=>{
+$("div.btn").click(()=>{
     if(color[arr[t]]==event.target.id)
     {
         glow(arr[t]);
         t++;
         if(t==arr.length)
         {
+            
+    $("#high").text("Your highscore is: "+Math.max(max,c));
+    max=c;
             t=0;
             c++;
             setTimeout(numberGen, 1000);
