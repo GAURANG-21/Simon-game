@@ -24,6 +24,7 @@ function wrong(){
     },100);
     arr=arr.splice();
     $("h1").text("Game over. Press any key to Restart");
+    
 }
 
 $("div.btn").click(()=>{
@@ -32,10 +33,8 @@ $("div.btn").click(()=>{
         glow(arr[t]);
         t++;
         if(t==arr.length)
-        {
+        { 
             
-    $("#high").text("Your highscore is: "+Math.max(max,c));
-    max=c;
             t=0;
             c++;
             setTimeout(numberGen, 1000);
@@ -43,6 +42,9 @@ $("div.btn").click(()=>{
     }
     else
     {
+    if(max<=c)
+    max=c;
+    $("#high").text("Your highscore is: "+max);
         c=1;
         t=0;
         wrong();
